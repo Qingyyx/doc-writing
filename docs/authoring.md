@@ -68,6 +68,7 @@
 | `SKILL.md` 的某道门禁 | `references/` 对应文件 + [evals/cases.yaml](../evals/cases.yaml) 至少 1 条用例 | `budget` + 人工 |
 | 任一术语（新增、改名、退役） | [docs/glossary.md](glossary.md) + [scripts/terms.json](../scripts/terms.json) | `terms` |
 | 报告层字段 | [0005 决策](decisions/0005-observable-checklist-output.md) + 用例的 `review` 清单 | `checklist` + 人工 |
+| 结构物与理解门 | [0006 决策](decisions/0006-structure-before-detail.md) + 解释文档用例 | 人工；结构物是否成立无法机器判定 |
 | `description` 或触发条件 | [evals/router_cases.yaml](../evals/router_cases.yaml) | 人工 |
 | 类型集合 | 五道门禁 + [0001 决策](decisions/0001-single-type-per-document.md) + 用例 | `sections`（标题变化时）+ 人工 |
 | 删减闸判据 | [0003 决策](decisions/0003-deletion-as-primary-action.md) + `references/` 对应文件 | `budget` + 人工 |

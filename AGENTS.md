@@ -29,7 +29,7 @@
 
 1. 入口状态永远是「未判」，类型只能是 P0 探针的输出（[SKILL.md](SKILL.md) §1）。
 2. 一个文件只承载一种文档类型；出现第二种就拆或删，不改标题敷衍（[SKILL.md](SKILL.md) §2）。
-3. 骨架不过不展开正文：首段没有可反驳的一句话结论，就先补结论（[SKILL.md](SKILL.md) §3）。
+3. 骨架不过不展开正文：首段没有可反驳的一句话结论，或第 2 段没有结构物，就先补骨架（[SKILL.md](SKILL.md) §3）。
 4. 写完必须按五个判据删，删减节数与段数写进体检表（[SKILL.md](SKILL.md) §4、§7）。
 5. 新术语先写 [docs/glossary.md](docs/glossary.md)，再同步 `scripts/terms.json` 的 `terms` 与 `forbidden`，最后才在正文使用。
 6. 改门禁、类型集合或体检表字段时，先加或改用例，再改 [SKILL.md](SKILL.md)，最后同步参考文件与文档（[docs/authoring.md](docs/authoring.md)）。

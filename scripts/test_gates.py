@@ -26,6 +26,7 @@ REF_NAMES = (
     "evidence.md",
     "instantiate.md",
     "anti-patterns.md",
+    "rewrite.md",
 )
 
 TERMS_FIXTURE = '{"terms": ["交付物"], "forbidden": ["绝不可能出现词"]}\n'
@@ -95,7 +96,7 @@ def break_budget(dest: Path) -> None:
 
 
 def break_checklist(dest: Path) -> None:
-    rewrite(dest / "SKILL.md", "- 未验证：<列出>", "- 未核验：<列出>")
+    rewrite(dest / "SKILL.md", "未验证；", "未核验；")
 
 
 def break_link_targets(dest: Path) -> None:

@@ -31,7 +31,7 @@ EXPECTED_SECTIONS = (
     "交付物",
     "入口：目的未判",
     "五种文档，五道门禁",
-    "结构闸：结论前置",
+    "结构闸：结论 → 结构 → 细节",
     "删减闸：写完必须删",
     "AI 味六项",
     "实例化",
@@ -40,8 +40,8 @@ EXPECTED_SECTIONS = (
     "按需加载",
 )
 
-# references 下应有恰好 7 个 .md，且每个相对路径在 SKILL.md 中出现恰好一次。
-EXPECTED_REF_COUNT = 7
+# references 下应有恰好 8 个 .md，且每个相对路径在 SKILL.md 中出现恰好一次。
+EXPECTED_REF_COUNT = 8
 
 # 输出契约一节体检表必须包含的字段名。
 CHECKLIST_FIELDS = (
@@ -663,11 +663,11 @@ def gate_checklist(repo: Repo) -> list[Failure]:
     body = "\n".join(lines[start:end - 1])
     failures: list[Failure] = []
     for field in CHECKLIST_FIELDS:
-        if f"{field}：" not in body:
+        if field not in body:
             failures.append(
                 Failure(
-                    f"{SKILL_REL}:{start} 输出契约一节缺少体检表字段「{field}：」",
-                    f"在体检表补上「{field}：」；然后运行 {fix}",
+                    f"{SKILL_REL}:{start} 输出契约一节缺少检查记录字段「{field}」",
+                    f"在输出契约补上「{field}」；然后运行 {fix}",
                 )
             )
     return failures
@@ -704,7 +704,7 @@ def gate_link_targets(repo: Repo) -> list[Failure]:
 GATES: tuple[tuple[str, str, object], ...] = (
     ("frontmatter", "SKILL.md frontmatter 字段、name、metadata 与 VERSION 一致", gate_frontmatter),
     ("sections", "SKILL.md 二级标题数量、顺序与文字", gate_sections),
-    ("refs", "references 恰好 7 个 .md 且各在 SKILL.md 中出现一次", gate_refs),
+    ("refs", "references 恰好 8 个 .md 且各在 SKILL.md 中出现一次", gate_refs),
     ("forbidden_words", "SKILL.md 与 references 无模糊词", gate_forbidden_words),
     ("terms", "terms.json 必现术语与禁用词", gate_terms),
     ("budget", "按 budget.json 检查行数与字符数", gate_budget),
