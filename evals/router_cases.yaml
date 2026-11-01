@@ -1,0 +1,37 @@
+# 触发判定用例。每条只回答一个问题：这段输入应不应该激活 doc-writing。
+# 字段：input 用户原话；should_activate 期望是否触发；why 一句话理由。
+# 正例覆盖三种触发路径：点名方法、点名文档类型、描述会写坏的具体材料。
+# 负例覆盖三类不该触发的请求：营销文案、翻译、纯格式排版。
+
+cases:
+  - input: '帮我写一份设计文档，读者是架构组，要在两个方案里选一个'
+    should_activate: true
+    why: '点名文档类型「设计文档」，且给出决策场景'
+
+  - input: '按 doc-writing 把这份 RFC 改成能评审的版本'
+    should_activate: true
+    why: '显式点名方法名'
+
+  - input: '这份技术方案太长了，帮我砍到评审能读完的程度'
+    should_activate: true
+    why: '点名技术方案，且描述的症状是篇幅'
+
+  - input: '把这份调研报告整理一下，老板只想知道结论和建议'
+    should_activate: true
+    why: '点名调研报告，读者与用途明确'
+
+  - input: '这段文档 AI 味太重，重点也不清楚，帮我按文档写作方法改'
+    should_activate: true
+    why: '点名文档写作方法，且给出 AI 味与重点不清两个触发词'
+
+  - input: '帮我写三条朋友圈文案，卖咖啡机的'
+    should_activate: false
+    why: '营销文案不在适用范围内'
+
+  - input: '把这份英文说明书翻译成中文'
+    should_activate: false
+    why: '翻译请求，不涉及类型判定与取舍'
+
+  - input: '把这份 Markdown 的标题层级统一改成二级'
+    should_activate: false
+    why: '纯格式排版，不涉及结构与删减'
